@@ -1,0 +1,9 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "recipe-analyze",
+	"compatibility_date": "2026-09-30",
+	"compatibility_flags": [
+		"nodejs_als"
+	],
+	"pages_build_output_dir": ".svelte-kit/cloudflare"
+}
