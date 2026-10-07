@@ -1,2 +1,33 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap');
+
+:global(html) {
+	background:
+		radial-gradient(circle at top left, rgba(122, 211, 255, 0.2), transparent 30%),
+		radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.18), transparent 34%),
+		#08111f;
+}
+
+:global(body) {
+	margin: 0;
+	min-height: 100vh;
+
+	font-family: 'Zen Kaku Gothic New', sans-serif !important;
+
+	background: transparent;
+	color: white;
+}
+
+:global(*) {
+	box-sizing: border-box;
+}
+
+:global(::selection) {
+	background: rgba(103, 232, 249, 0.35);
+	color: white;
+}
+
+@theme {
+	--font-zen: "Zen Kaku Gothic New", sans-serif;
+}
