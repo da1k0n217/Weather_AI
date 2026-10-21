@@ -103,9 +103,10 @@ export function parsePrediction(csv: string): ParsedPrediction {
 		return { label: values[0], details: allDetails.slice(0, 5) };
 	}
 
-	// 分類モデルが「score,0.1,0.8,...」のように返す場合は最大スコアを採用する。
-	// 先頭の "score" 列は数値ではないため、数値のセルだけを比較する。
-	if (lines.length >= 2 && headers.length === values.length) {
+	// 分類モデルが「score,0.1,0.8,...」のように返す場合だけ最大スコアを採用する。
+	// 予測入力列がそのまま返る回帰結果をスコアとして扱うと、距離などの数値列を
+	// 予測ラベルと誤認してしまうため、score列が明示された出力に限定する。
+	if (lines.length >= 2 && headers.length === values.length && /^(score|スコア|確率)$/i.test(headers[0])) {
 		const scores = values
 			.map((value, index) => ({ index, score: Number(value) }))
 			.filter((item) => Number.isFinite(item.score));
